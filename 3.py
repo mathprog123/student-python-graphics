@@ -14,13 +14,6 @@ Y_START = 100
 ## Скорость перемещения ракеток:
 RACKET_SPEED = 10
 
-## Скорость перемещения мячика:
-dx = 1
-dy = 1
-
-## Через какое время будет происходить премещение мячика (в мс):
-MS = 10
-
 Win=Tk()
 c = Canvas(Win, width=W, height=H, bg='black')
 c.pack()
@@ -52,23 +45,10 @@ def move_down_right_racket(event):
     if c.coords(right_racket)[3] < H - a:
         c.move(right_racket, 0, RACKET_SPEED)
 
-## Перемещение мячика в поле:
-def motion():
-    global dx, dy
-    if c.coords(ball)[0] < a or c.coords(ball)[2] > W - a:
-        dx = -dx
-    if c.coords(ball)[1] < a or c.coords(ball)[3] > H - a:
-        dy = -dy
-    c.move(ball, dx, dy)
-    Win.after(MS, motion)
-    
-
 ## Обработка нажатий клавиш:
 Win.bind('w', move_up_left_racket)
 Win.bind('s', move_down_left_racket)
 Win.bind('<Up>', move_up_right_racket)
 Win.bind('<Down>', move_down_right_racket)
-
-motion()
 
 Win.mainloop()
