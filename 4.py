@@ -44,7 +44,7 @@ def move_up_right_racket(event):
 def move_down_right_racket(event):
     if c.coords(right_racket)[3] < H - a:
         c.move(right_racket, 0, RACKET_SPEED)
-## Функции для движения мячика.
+## Функция для движения мячика.
 speed_x=5
 speed_y=5
 def motion_ball():
